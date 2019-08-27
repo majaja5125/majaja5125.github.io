@@ -150,7 +150,7 @@ define((require, exports, module) => {
   robotStore.action('ROBOT_CHANGE_ANGLES', (state, angles) => {
     const TCPpose = []
     IK.calculateTCP(
-      -angles.A0,
+      angles.A0,
       -angles.A1,
       -angles.A2,
       angles.A3,
