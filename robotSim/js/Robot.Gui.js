@@ -29,12 +29,12 @@ define((require, exports, module) => {
   // }
 
   const anglesDeg = {
-    A0: 0,
     A1: 0,
     A2: 0,
     A3: 0,
     A4: 0,
     A5: 0,
+    A6: 0,
   }
 
   const configuration = {
@@ -63,12 +63,12 @@ define((require, exports, module) => {
       anglesDeg[k] = angles[k] / Math.PI * 180
     })
     r.robotJoint = "Joint(" +  
-    Math.round(anglesDeg.A0 * 100) / 100 + "," +
     Math.round(anglesDeg.A1 * 100) / 100 + "," +
     Math.round(anglesDeg.A2 * 100) / 100 + "," +
     Math.round(anglesDeg.A3 * 100) / 100 + "," +
     Math.round(anglesDeg.A4 * 100) / 100 + "," +
-    Math.round(anglesDeg.A5 * 100) / 100 + ")"
+    Math.round(anglesDeg.A5 * 100) / 100 + "," +
+    Math.round(anglesDeg.A6 * 100) / 100 + ")"
     var joints = document.getElementById("clipboard")
     joints.value = r.robotJoint;
   })

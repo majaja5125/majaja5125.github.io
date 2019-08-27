@@ -29,12 +29,12 @@ define((require, exports, module) => {
       },
     },
     angles: {
-      A0: 0,
       A1: 0,
       A2: 0,
       A3: 0,
       A4: 0,
       A5: 0,
+      A6: 0,
     },
     jointOutOfBound: [false, false, false, false, false, false],
     maxAngleVelocities: {
@@ -108,6 +108,7 @@ define((require, exports, module) => {
       angles,
       configuration
     )
+
     outOfBounds = [false, false, false, false, false, false]
     let i = 0
     for (const index in jointLimits) {
@@ -116,6 +117,7 @@ define((require, exports, module) => {
       }
       i++
     }
+
     return {
       angles,
       outOfBounds,
@@ -135,12 +137,12 @@ define((require, exports, module) => {
       },
     }, {
       angles: {
-        A0: angles[0],
-        A1: angles[1],
-        A2: angles[2],
-        A3: angles[3],
-        A4: angles[4],
-        A5: angles[5],
+        A1: angles[0],
+        A2: angles[1],
+        A3: angles[2],
+        A4: angles[3],
+        A5: angles[4],
+        A6: angles[5],
       },
     }, {
       jointOutOfBound: [...outOfBounds],
@@ -150,12 +152,12 @@ define((require, exports, module) => {
   robotStore.action('ROBOT_CHANGE_ANGLES', (state, angles) => {
     const TCPpose = []
     IK.calculateTCP(
-      angles.A0,
-      -angles.A1,
+       angles.A1,
       -angles.A2,
-      angles.A3,
-      -angles.A4,
+      -angles.A3,
+       angles.A4,
       -angles.A5,
+      -angles.A6,
       TCPpose,
     )
     // IK.calculateAngles(TCPpose[0], TCPpose[1], TCPpose[2], TCPpose[3], TCPpose[4], TCPpose[5], angles)
@@ -177,12 +179,12 @@ define((require, exports, module) => {
       },
     }, {
       angles: {
-        A0: angles.A0,
         A1: angles.A1,
         A2: angles.A2,
         A3: angles.A3,
         A4: angles.A4,
         A5: angles.A5,
+        A6: angles.A6,
       },
     })
     // return Object.assign({}, state, {
@@ -200,12 +202,12 @@ define((require, exports, module) => {
     //   },
     // }, {
     //   angles: {
-    //     A0: angles[0],
-    //     A1: angles[1],
-    //     A2: angles[2],
-    //     A3: angles[3],
-    //     A4: angles[4],
-    //     A5: angles[5],
+    //     A1: angles[0],
+    //     A2: angles[1],
+    //     A3: angles[2],
+    //     A4: angles[3],
+    //     A5: angles[4],
+    //     A6: angles[5],
     //   },
     // })
     // { todo
@@ -222,12 +224,12 @@ define((require, exports, module) => {
     } = calculateAngles(state.jointLimits, state.target.position, state.target.rotation, state.configuration)
     return Object.assign({}, state, {
       angles: {
-        A0: angles[0],
-        A1: angles[1],
-        A2: angles[2],
-        A3: angles[3],
-        A4: angles[4],
-        A5: angles[5],
+        A1: angles[0],
+        A2: angles[1],
+        A3: angles[2],
+        A4: angles[3],
+        A5: angles[4],
+        A6: angles[5],
       },
     }, {
       jointOutOfBound: [...outOfBounds],
@@ -281,12 +283,12 @@ define((require, exports, module) => {
     } = calculateAngles(state.jointLimits, state.target.position, state.target.rotation, data)
     return Object.assign({}, state, {
       angles: {
-        A0: angles[0],
-        A1: angles[1],
-        A2: angles[2],
-        A3: angles[3],
-        A4: angles[4],
-        A5: angles[5],
+        A1: angles[0],
+        A2: angles[1],
+        A3: angles[2],
+        A4: angles[3],
+        A5: angles[4],
+        A6: angles[5],
       },
       configuration: [...data],
       jointOutOfBound: [...outOfBounds],
