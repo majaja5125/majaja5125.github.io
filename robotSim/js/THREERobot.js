@@ -83,7 +83,7 @@ const THREERobot = function (V_initial, limits, scene) {
         break
       case 4:
         // joint.rotation.x = Math.PI / 2
-        // joint.rotation.y = Math.PI / 2
+        joint.rotation.y = Math.PI / 2
         break
       case 5:
         joint.rotation.x = Math.PI / 2
@@ -138,11 +138,11 @@ THREERobot.prototype = {
   setAngles(angles) {
     this.angles = angles
     this.robotBones[0].rotation.z = angles[0]
-    this.robotBones[1].rotation.y = angles[1]
-    this.robotBones[2].rotation.y = angles[2]
+    this.robotBones[1].rotation.y = -angles[1]
+    this.robotBones[2].rotation.y = -angles[2]
     this.robotBones[3].rotation.x = angles[3]
-    this.robotBones[4].rotation.y = angles[4]
-    this.robotBones[5].rotation.z = angles[5]
+    this.robotBones[4].rotation.y = -angles[4]
+    this.robotBones[5].rotation.z = -angles[5]
   },
 
   setAngle(index, angle) {

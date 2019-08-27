@@ -108,7 +108,6 @@ define((require, exports, module) => {
       angles,
       configuration
     )
-
     outOfBounds = [false, false, false, false, false, false]
     let i = 0
     for (const index in jointLimits) {
@@ -151,19 +150,19 @@ define((require, exports, module) => {
   robotStore.action('ROBOT_CHANGE_ANGLES', (state, angles) => {
     const TCPpose = []
     IK.calculateTCP(
-      angles.A0,
-      angles.A1,
-      angles.A2,
+      -angles.A0,
+      -angles.A1,
+      -angles.A2,
       angles.A3,
-      angles.A4,
-      angles.A5,
+      -angles.A4,
+      -angles.A5,
       TCPpose,
     )
-      
     // IK.calculateAngles(TCPpose[0], TCPpose[1], TCPpose[2], TCPpose[3], TCPpose[4], TCPpose[5], angles)
 
-    return Object.assign({}, state,{robotJoint :3},
-      {
+    return Object.assign({}, state,
+    { robotJoint :3
+    }, {
       target: {
         position: {
           x: TCPpose[0],
