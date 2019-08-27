@@ -67,7 +67,7 @@ define((require, exports, module) => {
     Math.round(anglesDeg.A1 * 100) / 100 + "," +
     Math.round(anglesDeg.A2 * 100) / 100 + "," +
     Math.round(anglesDeg.A3 * 100) / 100 + "," +
-    -Math.round(anglesDeg.A4 * 100) / 100 + "," +
+    Math.round(anglesDeg.A4 * 100) / 100 + "," +
     Math.round(anglesDeg.A5 * 100) / 100 + ")"
     var joints = document.getElementById("clipboard")
     joints.value = r.robotJoint;
@@ -86,6 +86,7 @@ define((require, exports, module) => {
       robotStore.dispatch('ROBOT_CHANGE_ANGLES', anglesRad)
     })
   }
+
   const configurationGui = gui.addFolder('configuration')
   for (const key in configuration) {
     configurationGui.add(configuration, key).listen().onChange(() => {
